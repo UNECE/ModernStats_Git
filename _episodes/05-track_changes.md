@@ -332,12 +332,7 @@ Staging things manually or using a pattern is the best practice,
 otherwise you might find yourself searching for "git undo commit" more
 than you would like!
  
-Before we even look at the contents of what we have staged, we can check what we have staged using with the `status` command
-  
-```bash
-$git status
-```
-![]
+Remember to use `git status` after you add files to check what you have staged/added.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
