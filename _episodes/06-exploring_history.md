@@ -16,7 +16,7 @@ As we saw in the previous episode, we can refer to commits by their
 identifiers.  You can refer to the *most recent commit* of the working
 directory by using the identifier `HEAD`. When working in official statistics, we may need to refer to previous versions of our code to validate methodologies or compare older approaches. 
 
-In this case of this course, we've been adding one line at a time to `mars.txt`, so it's easy to track our
+In this course, we've been adding one line at a time to `mars.txt`, so it's easy to track our
 progress by looking, so let's do that using our `HEAD`s.  Before we start,
 let's make a change to `mars.txt`, adding yet another line.
 
@@ -286,7 +286,7 @@ the commit in which we made the change we're trying to discard.
 In the example below, we want to retrieve the state from before the most
 recent commit (`HEAD~1`), which is commit `f22b25e`:
 
-![](fig/git-checkout.svg){alt='Git Checkout'}
+![](fig/git-checkout.svg){alt='Diagram showing visually what the git checkout process looks like. A stack of commits with commit IDs labelled from top to bottom: HEAD, HEAD~1, HEAD~2. There is an arrow pointing from the stack to the left. On the arrow is written "git checkout HEAD~1 or git checkout f22b253". The arrow is pointing towards two pieces of paper, one labelled FILE1.txt and the other FILE2.txt'}
 
 So, to put it all together,
 here's how Git works in cartoon form:
@@ -372,49 +372,7 @@ As discussed above, you are left in a *detached* `HEAD` state, and you don't wan
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Reverting a Commit
-
-Jennifer is collaborating with colleagues on her Python script.  She
-realizes her last commit to the project's repository contained an error, and
-wants to undo it.  Jennifer wants to undo correctly so everyone in the project's
-repository gets the correct change. The command `git revert [erroneous commit ID]` will create a
-new commit that reverses the erroneous commit.
-
-The command `git revert` is
-different from `git checkout [commit ID]` because `git checkout` returns the
-files not yet committed within the local repository to a previous state, whereas `git revert`
-reverses changes committed to the local and project repositories.
-
-Below are the right steps and explanations for Jennifer to use `git revert`,
-what is the missing command?
-
-1. `________ # Look at the git history of the project to find the commit ID`
-
-2. Copy the ID (the first few characters of the ID, e.g. 0b1d055).
-
-3. `git revert [commit ID]`
-
-4. Type in the new commit message.
-
-5. Save and close
-
-:::::::::::::::  solution
-
-## Solution
-
-The command `git log` lists project history with commit IDs.
-
-The command `git show HEAD` shows changes made at the latest commit, and lists
-the commit ID; however, Jennifer should double-check it is the correct commit, and no one
-else has committed changes to the repository.
-
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
