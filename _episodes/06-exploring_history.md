@@ -20,25 +20,28 @@ In this course, we've been adding one line at a time to `mars.txt`, so it's easy
 progress by looking, so let's do that using our `HEAD`s.  Before we start,
 let's make a change to `mars.txt`, adding yet another line.
 
-```bash
+~~~
 $ nano mars.txt
 $ cat mars.txt
-```
+~~~
+{: .bash}
 
-```output
+~~~
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
 An ill-considered change
-```
+~~~
+{: .output}
 
 Now, let's see what we get.
 
-```bash
+~~~
 $ git diff HEAD mars.txt
-```
+~~~
+{: .bash}
 
-```output
+~~~
 diff --git a/mars.txt b/mars.txt
 index b36abfd..0848c8d 100644
 --- a/mars.txt
@@ -48,7 +51,8 @@ index b36abfd..0848c8d 100644
  The two moons may be a problem for Wolfman
  But the Mummy will appreciate the lack of humidity
 +An ill-considered change.
-```
+~~~
+{: .output}
 
 which is the same as what you would get if you leave out `HEAD` (try it).  The
 real goodness in all this is when you can refer to previous commits.  We do
@@ -56,18 +60,20 @@ that by adding `~1`
 (where "~" is "tilde", pronounced [**til**\-d*uh*])
 to refer to the commit one before `HEAD`.
 
-```bash
+~~~
 $ git diff HEAD~1 mars.txt
-```
+~~~
+{: .bash}
 
 If we want to see the differences between older commits we can use `git diff`
 again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 
-```bash
+~~~
 $ git diff HEAD~3 mars.txt
-```
+~~~
+{: .bash}
 
-```output
+~~~
 diff --git a/mars.txt b/mars.txt
 index df0654a..b36abfd 100644
 --- a/mars.txt
@@ -77,17 +83,19 @@ index df0654a..b36abfd 100644
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity
 +An ill-considered change
-```
+~~~
+{: .output}
 
 We could also use `git show` which shows us what changes we made at an older commit as
 well as the commit message, rather than the *differences* between a commit and our
 working directory that we see by using `git diff`.
 
-```bash
+~~~
 $ git show HEAD~3 mars.txt
-```
+~~~
+{: .bash}
 
-```output
+~~~
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 09:51:46 2013 -0400
@@ -101,7 +109,8 @@ index 0000000..df0654a
 +++ b/mars.txt
 @@ -0,0 +1 @@
 +Cold and dry, but everything is my favorite color
-```
+~~~
+{: .output}
 
 In this way,
 we can build up a chain of commits.
@@ -122,11 +131,12 @@ Our first commit was given the ID
 `f22b25e3233b4645dabd0d81e651fe074bd8e73b`,
 so let's try this:
 
-```bash
+~~~
 $ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
-```
+~~~
+{: .bash}
 
-```output
+~~~
 diff --git a/mars.txt b/mars.txt
 index df0654a..93a3e13 100644
 --- a/mars.txt
@@ -136,17 +146,19 @@ index df0654a..93a3e13 100644
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity
 +An ill-considered change
-```
+~~~
+{: .output}
 
 That's the right answer,
 but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters (typically seven for normal size projects):
 
-```bash
+~~~
 $ git diff f22b25e mars.txt
-```
+~~~
+{: .bash}
 
-```output
+~~~
 diff --git a/mars.txt b/mars.txt
 index df0654a..93a3e13 100644
 --- a/mars.txt
@@ -156,7 +168,8 @@ index df0654a..93a3e13 100644
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity
 +An ill-considered change
-```
+~~~
+{: .output}
 
 All right! So
 we can save changes to files and see what we've changed. Now, how
@@ -167,11 +180,12 @@ Let's suppose we change our mind about the last update to
 `git status` now tells us that the file has been changed,
 but those changes haven't been staged:
 
-```bash
+~~~
 $ git status
-```
+~~~
+{: .bash}
 
-```output
+~~~
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -180,21 +194,24 @@ Changes not staged for commit:
     modified:   mars.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
-```
+~~~
+{: .output}
 
 We can put things back the way they were
 by using `git checkout`:
 
-```bash
+~~~
 $ git checkout HEAD mars.txt
 $ cat mars.txt
-```
+~~~
+{: .bash}
 
-```output
+~~~
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
-```
+~~~
+{: .output}
 
 As you might guess from its name,
 `git checkout` checks out (i.e., restores) an old version of a file.
@@ -204,79 +221,88 @@ which is the last saved commit.
 If we want to go back even further,
 we can use a commit identifier instead:
 
-```bash
+~~~
 $ git checkout f22b25e mars.txt
-```
+~~~
+{: .bash}
 
-```bash
+~~~
 $ cat mars.txt
-```
+~~~
+{: .bash}
 
-```output
+~~~
 Cold and dry, but everything is my favorite color
-```
+~~~
+{: .output}
 
-```bash
+~~~
 $ git status
-```
+~~~
+{: .bash}
 
-```output
+~~~
 On branch main
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
     modified:   mars.txt
 
-```
+~~~
+{: .output}
 
 Notice that the changes are currently in the staging area.
 Again, we can put things back the way they were
 by using `git checkout`:
 
-```bash
+~~~
 $ git checkout HEAD mars.txt
-```
+~~~
+{: .bash}
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Don't Lose Your HEAD
-
-Above we used
-
-```bash
-$ git checkout f22b25e mars.txt
-```
-
-to revert `mars.txt` to its state after the commit `f22b25e`. But be careful!
-The command `checkout` has other important functionalities and Git will misunderstand
-your intentions if you are not accurate with the typing. For example,
-if you forget `mars.txt` in the previous command.
-
-```bash
-$ git checkout f22b25e
-```
-
-```error
-Note: checking out 'f22b25e'.
-
-You are in 'detached HEAD' state. You can look around, make experimental
-changes and commit them, and you can discard any commits you make in this
-state without impacting any branches by performing another checkout.
-
-If you want to create a new branch to retain commits you create, you may
-do so (now or later) by using -b with the checkout command again. Example:
-
- git checkout -b <new-branch-name>
-
-HEAD is now at f22b25e Start notes on Mars as a base
-```
-
-The "detached HEAD" is like "look, but don't touch" here,
-so you shouldn't make any changes in this state.
-After investigating your repo's past state, reattach your `HEAD` with `git checkout main`.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+>## Don't Lose Your HEAD
+>
+>Above we used
+>
+>~~~
+>$ git checkout f22b25e mars.txt
+>~~~
+>{: .bash}
+>
+>to revert `mars.txt` to its state after the commit `f22b25e`. But be careful!
+>The command `checkout` has other important functionalities and Git will misunderstand
+>your intentions if you are not accurate with the typing. For example,
+>if you forget `mars.txt` in the previous command.
+>
+>~~~
+>$ git checkout f22b25e
+>~~~
+>{: .bash}
+>
+>~~~
+>Note: checking out 'f22b25e'.
+>
+>You are in 'detached HEAD' state. You can look around, make experimental
+>changes and commit them, and you can discard any commits you make in this
+>state without impacting any branches by performing another checkout.
+>
+>If you want to create a new branch to retain commits you create, you may
+>do so (now or later) by using -b with the checkout command again. Example:
+>
+> git checkout -b <new-branch-name>
+>
+>HEAD is now at f22b25e Start notes on Mars as a base
+>~~~
+>{: .error}
+>
+>The "detached HEAD" is like "look, but don't touch" here,
+>so you shouldn't make any changes in this state.
+>After investigating your repo's past state, reattach your `HEAD` with `git checkout main`.
+>
+>
+{: .callout}
 
 It's important to remember that
 we must use the commit number that identifies the state of the repository
@@ -291,7 +317,16 @@ recent commit (`HEAD~1`), which is commit `f22b25e`:
 So, to put it all together,
 here's how Git works in cartoon form:
 
-![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](fig/git_staging.svg)
+![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](fig/git_staging.svg){}
+
+>## You don't have to use Bash to see a history
+>Sometimes seeing a history in bash can be difficult, especially if a file has many commits associated with it. There are several GUI (graphical user interface) programs that can help you view the history of the files in your respository. The availability of these programs will depend on your organization and their licensing. 
+>
+>Some that we have found include:
+>- GitHub Desktop
+>- Sourcetree
+>- Git Kraken
+{: .callout}
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -300,9 +335,10 @@ here's how Git works in cartoon form:
 If you read the output of `git status` carefully,
 you'll see that it includes this hint:
 
-```output
+~~~
 (use "git checkout -- <file>..." to discard changes in working directory)
-```
+~~~
+{: .output}
 
 As it says,
 `git checkout` without a version identifier restores files to the state saved in `HEAD`.
@@ -380,7 +416,7 @@ As discussed above, you are left in a *detached* `HEAD` state, and you don't wan
 
 What is the output of the last command in
 
-```bash
+~~~
 $ cd planets
 $ echo "Venus is beautiful and full of love" > venus.txt
 $ git add venus.txt
@@ -388,21 +424,26 @@ $ echo "Venus is too hot to be suitable as a base" >> venus.txt
 $ git commit -m "Comment on Venus as an unsuitable base"
 $ git checkout HEAD venus.txt
 $ cat venus.txt #this will print the contents of venus.txt to the screen
-```
+~~~
+{: .bash}
 
-1. ```output
+1. ~~~
   Venus is too hot to be suitable as a base
-  ```
-2. ```output
+  ~~~
+  {: .output}
+2. ~~~
   Venus is beautiful and full of love
-  ```
-3. ```output
+  ~~~
+  {: .output}
+3. ~~~
   Venus is beautiful and full of love
   Venus is too hot to be suitable as a base
-  ```
-4. ```output
+  ~~~
+  {: .output}
+4. ~~~
   Error because you have changed venus.txt without committing the changes
-  ```
+  ~~~
+  {: .output}
 
 :::::::::::::::  solution
 
@@ -424,9 +465,10 @@ replaces the working copy with the most recently committed version of `venus.txt
 
 So, `cat venus.txt` will output
 
-```output
+~~~
 Venus is beautiful and full of love.
-```
+~~~
+{: .output}
 
 :::::::::::::::::::::::::
 
@@ -462,14 +504,15 @@ then use `git checkout` to see if you can remove your change.
 After adding a change, `git checkout` can not be used directly.
 Let's look at the output of `git status`:
 
-```output
+~~~
 On branch main
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
         modified:   mars.txt
 
-```
+~~~
+{: .output}
 
 Note that if you don't have the same output
 you may either have forgotten to change the file,
@@ -480,22 +523,25 @@ but it does not restore the file either.
 Git helpfully tells us that we need to use `git reset` first
 to unstage the file:
 
-```bash
+~~~
 $ git reset HEAD mars.txt
-```
+~~~
+{: .bash}
 
-```output
+~~~
 Unstaged changes after reset:
 M	mars.txt
-```
+~~~
+{: .output}
 
 Now, `git status` gives us:
 
-```bash
+~~~
 $ git status
-```
+~~~
+{: .bash}
 
-```output
+~~~
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -504,20 +550,23 @@ Changes not staged for commit:
         modified:   mars.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
-```
+~~~
+{: .output}
 
 This means we can now use `git checkout` to restore the file
 to the previous commit:
 
-```bash
+~~~
 $ git checkout -- mars.txt
 $ git status
-```
+~~~
+{: .bash}
 
-```output
+~~~
 On branch main
 nothing to commit, working tree clean
-```
+~~~
+{: .output}
 
 :::::::::::::::::::::::::
 
@@ -538,9 +587,10 @@ How can you narrow down the search?
 Recall that the `git diff` command allows us to explore one specific file,
 e.g., `git diff mars.txt`. We can apply a similar idea here.
 
-```bash
+~~~
 $ git log mars.txt
-```
+~~~
+{: .bash}
 
 Unfortunately some of these commit messages are very ambiguous, e.g., `update files`.
 How can you search through these files?
@@ -549,18 +599,20 @@ Both `git diff` and `git log` are very useful and they summarize a different par
 for you.
 Is it possible to combine both? Let's try the following:
 
-```bash
+~~~
 $ git log --patch mars.txt
-```
+~~~
+{: .bash}
 
 You should get a long list of output, and you should be able to see both commit messages and
 the difference between each commit.
 
 Question: What does the following command do?
 
-```bash
+~~~
 $ git log --patch HEAD~9 *.txt
-```
+~~~
+{: .bash}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
