@@ -28,7 +28,7 @@ We can choose to work in any folder, but it is preferable not to create your rep
 Multiple people should work together on the same project using the remote repository (introduced in the [remotes episode](08-remotes.md)).
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Then we tell Git to make `planets` a [repository](../learners/reference.md#repository)
+Then we tell Git to make `planets` a [repository](https://swcarpentry.github.io/git-novice/reference.html#repository)
 \-- a place where Git can store versions of our files:
 
 ~~~
