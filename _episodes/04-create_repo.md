@@ -37,7 +37,7 @@ $ git init
 {: .bash}
 
 :::::::::::::::::::::::::::::::::::::::::  callout
-If the respository already exists, there is no need to create a repository locally.
+If the respository already exists (e.g. you are joining a project that has already started), there is no need to create a repository locally.
 It is easier to clone the remote repository, as described in the [remotes episode](08-remotes.md).
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
