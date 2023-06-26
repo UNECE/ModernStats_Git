@@ -23,6 +23,8 @@ $ cd planets
 ~~~
 {: .bash}
 
+The repository's name should be machine readable (i.e. no spaces, special characters or accents).
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 We can choose to work in any folder, but it is preferable not to create your repository on a shared folder. 
 Multiple people should work together on the same project using the remote repository (introduced in the [remotes episode](08-remotes.md)).
