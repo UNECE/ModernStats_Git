@@ -49,7 +49,13 @@
     <loc>https://UNECE.github.io/ModernStats_Git/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://UNECE.github.io/ModernStats_Git/aio.html</loc>
+  </url>
+  <url>
     <loc>https://UNECE.github.io/ModernStats_Git/discuss.html</loc>
+  </url>
+  <url>
+    <loc>https://UNECE.github.io/ModernStats_Git/images.html</loc>
   </url>
   <url>
     <loc>https://UNECE.github.io/ModernStats_Git/index.html</loc>
@@ -103,16 +109,34 @@
     <loc>https://UNECE.github.io/ModernStats_Git/instructor/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://UNECE.github.io/ModernStats_Git/instructor/aio.html</loc>
+  </url>
+  <url>
     <loc>https://UNECE.github.io/ModernStats_Git/instructor/discuss.html</loc>
   </url>
   <url>
+    <loc>https://UNECE.github.io/ModernStats_Git/instructor/images.html</loc>
+  </url>
+  <url>
     <loc>https://UNECE.github.io/ModernStats_Git/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://UNECE.github.io/ModernStats_Git/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://UNECE.github.io/ModernStats_Git/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://UNECE.github.io/ModernStats_Git/instructor/profiles.html</loc>
   </url>
   <url>
     <loc>https://UNECE.github.io/ModernStats_Git/instructor/reference.html</loc>
+  </url>
+  <url>
+    <loc>https://UNECE.github.io/ModernStats_Git/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://UNECE.github.io/ModernStats_Git/key-points.html</loc>
   </url>
   <url>
     <loc>https://UNECE.github.io/ModernStats_Git/profiles.html</loc>
